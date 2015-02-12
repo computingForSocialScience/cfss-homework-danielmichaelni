@@ -18,7 +18,13 @@ def fetchArtistInfo(artist_id):
 `   returns a dictionary including the keys 'followers', 'genres', 
     'id', 'name', and 'popularity'.
     """
-    url = SPOTIFY_API_BASE_URL + '/v1/artists/' + id
+    url = SPOTIFY_API_BASE_URL + '/v1/artists/' + artist_id
     req = requests.get(url)
     data = req.json()
-    return data
+    artist_info = {}
+    artist_info['followers'] = data['followers']['total']
+    artist_info['genres'] = data['genres']
+    artist_info['id'] = data['id']
+    artist_info['name'] = data['name']
+    artist_info['popularity'] = data['popularity']
+    return artist_info

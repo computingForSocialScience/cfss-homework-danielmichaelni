@@ -16,7 +16,7 @@ def degree(edgeList, in_or_out):
     return edgeList['artist1'].value_counts()
 
 def combineEdgeLists(edgeList1, edgeList2):
-    return pd.concat(edgeList1, edgeList2).drop_duplicates()
+    return pd.concat([edgeList1, edgeList2]).drop_duplicates()
 
 def pandasToNetworkX(edgeList):
     records = edgeList.to_records(index=False)
@@ -26,8 +26,8 @@ def pandasToNetworkX(edgeList):
 
 def randomCentralNode(inputDiGraph):
     ec = nx.eigenvector_centrality(inputDiGraph)
-    sum = sum(ec.values())
+    total = sum(ec.values())
     ec_norm = {}
-    for k,v in ec:
-        ec_norm[k] = v / sum
+    for k,v in ec.items():
+        ec_norm[k] = v / total
     return np.random.choice(ec_norm.keys(), p=ec_norm.values())

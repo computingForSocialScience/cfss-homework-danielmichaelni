@@ -29,4 +29,4 @@ def getEdgeList(artistID, depth):
     return pd.DataFrame(getDepthEdges(artistID, depth), columns=['artist1', 'artist2'])
 
 def writeEdgeList(artistID, depth, filename):
-    getEdgeList(artistID, depth).to_csv(filename, index=False)
+    getEdgeList(artistID, depth).to_csv(filename, index=False, encoding='utf-8')

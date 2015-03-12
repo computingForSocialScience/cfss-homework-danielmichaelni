@@ -26,7 +26,6 @@ def make_playlists_resp():
     cur = db.cursor()
     cur.execute('SELECT * FROM playlists;')
     playlists = cur.fetchall()
-    print playlists
     return render_template('playlists.html',playlists=playlists)
 
 
@@ -86,7 +85,6 @@ def createNewPlaylist(name):
         i += 1
 
     insert_query = '''INSERT INTO songs (playlistId, songOrder, artistName, albumName, trackName) VALUES (%s, %s, %s, %s, %s);'''
-    print songs_list
     cur.executemany(insert_query, songs_list)
 
     db.commit()

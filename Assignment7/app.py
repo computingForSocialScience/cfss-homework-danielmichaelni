@@ -26,12 +26,14 @@ def make_playlists_resp():
     cur = db.cursor()
     cur.execute('SELECT * FROM playlists;')
     playlists = cur.fetchall()
-    print playlists
     return render_template('playlists.html',playlists=playlists)
 
 
 @app.route('/playlist/<playlistId>')
 def make_playlist_resp(playlistId):
+    cur = db.cursor()
+    cur.execute('SELECT songOrder, artistName, albumName, trackName FROM songs WHERE playlistId = %s ORDER BY songOrder;', playlistId)
+    songs = cur.fetchall()
     return render_template('playlist.html',songs=songs)
 
 

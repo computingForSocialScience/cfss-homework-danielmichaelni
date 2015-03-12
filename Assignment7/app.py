@@ -26,6 +26,7 @@ def make_playlists_resp():
     cur = db.cursor()
     cur.execute('SELECT * FROM playlists;')
     playlists = cur.fetchall()
+    print playlists
     return render_template('playlists.html',playlists=playlists)
 
 
@@ -45,7 +46,7 @@ def add_playlist():
     elif request.method == 'POST':
         # this code executes when someone fills out the form
         artistName = request.form['artistName']
-        # YOUR CODE HERE
+        createNewPlaylist(artistName)
         return(redirect("/playlists/"))
 
 
@@ -91,5 +92,16 @@ def createNewPlaylist(name):
     db.commit()
 
 if __name__ == '__main__':
+    cur = db.cursor()
+    sql = '''CREATE TABLE IF NOT EXISTS playlists (id INTEGER PRIMARY KEY AUTO_INCREMENT,
+                                                   rootArtist VARCHAR(255));'''
+    cur.execute(sql)
+    sql = '''CREATE TABLE IF NOT EXISTS songs (playlistId INTEGER,
+                                               songOrder INTEGER,
+                                               artistName VARCHAR(255),
+                                               albumName VARCHAR(255),
+                                               trackName VARCHAR(255));'''
+    cur.execute(sql)
+
     app.debug=True
     app.run()

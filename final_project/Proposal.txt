@@ -1,3 +1,7 @@
-Daniel Ni
+Daniel Ni, Michelle Wang
 
 Facebook network analysis
+
+Instructions:
+1. $python app.py
+2. explore the website

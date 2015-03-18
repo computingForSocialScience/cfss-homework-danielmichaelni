@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1>{{ name }}</h1>
+    <img src="{{ pic }}" class="img-responsive">
+    <ul>
+        <li>Sex: {{ sex }}</li>
+        <li>Birthday: {{ birthday }}</li>
+        <li>
+            <a href="{{ profile }}">Visit {{ name }}'s profile on Facebook</a>
+        </li>
+    </ul>
+
+    <h3>Friends</h3>
+    <ul>
+        {% for friend in friends_with_id %}
+            <li>
+                <a href="/profile/{{ friend[0] }}">{{ friend[1] }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h3>Friend Graph</h3>
+    <img src="/static/temp/{{ graph_url }}" class="img-responsive">
+</body>
+</html>

@@ -7,6 +7,12 @@ user = 'root'
 passwd = ''
 db = pymysql.connect(db=dbname, host=host, user=user, passwd=passwd, charset='utf8')
 
+def drop_sql_tables():
+    cur = db.cursor()
+    cur.execute('DROP TABLE IF EXISTS friend_attributes;')
+    cur.execute('DROP TABLE IF EXISTS friend_edges;')
+    db.commit()
+
 def create_sql_tables():
     cur = db.cursor()
     sql = '''CREATE TABLE IF NOT EXISTS friend_attributes (uid VARCHAR(255),

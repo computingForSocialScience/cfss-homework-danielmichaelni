@@ -6,13 +6,19 @@
     <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <h1>Mis Amigos</h1>
-    <ul>
-        {% for friend in friends %}
-            <li>
-                <a href="/profile/{{ friend[0] }}">{{ friend[1] }}</a>
-            </li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <nav>
+            <a href="/" class="btn btn-default">Home</a>
+            <a href="/upload" class="btn btn-default">Upload</a>
+        </nav>
+        <h1>Mis Amigos</h1>
+        <ul>
+            {% for friend in friends %}
+                <li>
+                    <a href="/profile/{{ friend[0] }}">{{ friend[1] }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>

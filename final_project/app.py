@@ -19,23 +19,29 @@ app = Flask(__name__)
 def index():
     cur = db.cursor()
     cur.execute('SELECT uid, name FROM friend_attributes;')
-    friends = cur.fetchall()[:50]
+    friends = cur.fetchall()[:100]
 
     return render_template('index.html', friends=friends)
 
 @app.route('/profile/<userid>')
 def profile(userid):
     cur = db.cursor()
-    cur.execute('SELECT name, pic, sex, birthday_date, profile_url FROM friend_attributes WHERE uid = %s;', userid)
+    cur.execute('SELECT name, pic, sex, birthday_date, profile_url, current_location FROM friend_attributes WHERE uid = %s;', userid)
     attrs = cur.fetchall()
     print attrs
     attrs = attrs[0]
-    name, pic, sex, birthday, profile_url = attrs[0], attrs[1], attrs[2], attrs[3], attrs[4]
+    name, pic, sex, birthday, profile_url, current_location = attrs[0], attrs[1], attrs[2], attrs[3], attrs[4], attrs[5]
     
+    loc = 'N/A'
+    if current_location != 'null':
+        loc_dict = json.loads(current_location)
+        loc = loc_dict['city'] + ', ' + loc_dict['country']
+
     cur.execute('SELECT uid1, uid2 FROM friend_edges WHERE uid1 = %s;', name)
-    friends = cur.fetchall()[:50]
+    friends = cur.fetchall()[:100]
 
     G = nx.Graph()
+    G.clear()
     G.add_edges_from(friends)
 
     friends_with_id = []
@@ -45,7 +51,8 @@ def profile(userid):
         if uid != ():
             friends_with_id.append((uid[0][0], f[1]))
 
-    nx.draw(G)
+    plt.clf()
+    nx.draw(G, node_color='b', alpha=0.6)
     f = tempfile.NamedTemporaryFile(dir='static/temp',
                                     suffix='.png',
                                     delete=False)
@@ -58,6 +65,7 @@ def profile(userid):
                                            sex=sex,
                                            birthday=birthday,
                                            profile_url=profile_url,
+                                           loc = loc,
                                            friends_with_id=friends_with_id,
                                            graph_url=graph_url)
 
@@ -95,8 +103,6 @@ def upload():
 
         drop_sql_tables()
         create_sql_tables()
-        
-        print 'here'
 
         cur = db.cursor()
         sql = '''INSERT INTO friend_attributes
@@ -110,8 +116,6 @@ def upload():
         cur.executemany(sql, friend_attributes)
         sql = '''INSERT INTO friend_edges (uid1, uid2) VALUES (%s, %s);'''
         cur.executemany(sql, friend_edges)
-
-        print 'here2'
 
         db.commit()
 

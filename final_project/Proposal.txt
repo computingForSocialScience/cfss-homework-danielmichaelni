@@ -3,5 +3,8 @@ Daniel Ni, Michelle Wang
 Facebook network analysis
 
 Instructions:
-1. $python app.py
+1. $ python app.py
 2. explore the website
+
+Note:
+Occasionally the upload functionality stalls. If this occurs, restart the app and try again.

@@ -2,26 +2,160 @@
 <html>
 <head>
     <title>Upload</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <h1>Upload your Facebook data!</h1>
-    <h3>Accessible through <a href="https://apps.facebook.com/give_me_my_data/">Give Me My Data</a></h3>
-    <form action="" method="post">
+    <div class="container">
+        <nav>
+            <a href="/" class="btn btn-default">Home</a>
+            <a href="/upload" class="btn btn-default">Upload</a>
+        </nav>
+        <h1>Upload your Facebook data!</h1>
+        <h3>Accessible through <a href="https://apps.facebook.com/give_me_my_data/">Give Me My Data</a></h3>
+        <form action="" method="post">
+            <p class="form-group">
+                <label>Friend Attributes</label>
+                <br>
+                <textarea name="friend_attributes" class="form-control"></textarea>
+                <!--<input type="text" name="friend_attributes">-->
+            </p>
+            <p class="form-group">
+                <label>Friend Edges</label>
+                <br>
+                <textarea name="friend_edges" class="form-control"></textarea>
+                <!--<input type="text" name="friend_edges">-->
+            </p>
+            <p>
+                <input type="submit" value="Upload!" class="btn btn-default">
+            </p>
+        </form>
+        <h1>Sample Data</h1>
+        <h3>Friend Attributes</h3>
         <p>
-            <label>Friend Attributes</label>
-            <br>
-            <textarea name="friend_attributes"></textarea>
-            <!--<input type="text" name="friend_attributes">-->
+            [
+    {
+        "uid":"583186553",
+        "first_name":"Daniel",
+        "middle_name":"",
+        "last_name":"Wang",
+        "name":"Daniel Wang",
+        "pic_small":"https:\/\/fbcdn-profile-a.akamaihd.net\/hprofile-ak-xpf1\/v\/t1.0-1\/p50x50\/10645271_10153210681381554_4457471542377841224_n.jpg?oh=9dbad58e14b05fa7c2781adaeeab5b97&oe=55B9C2F4&__gda__=1438481938_340148e4999cce9553d9c9d336d45446",
+        "pic_big":"https:\/\/fbcdn-profile-a.akamaihd.net\/hprofile-ak-xpf1\/v\/t1.0-1\/p200x200\/10645271_10153210681381554_4457471542377841224_n.jpg?oh=7f1c89ed392db6a1500e6a891218a12e&oe=557CBE29&__gda__=1437676625_1f09cbbd7391dcb3d3abf4fa61115840",
+        "pic_square":"https:\/\/fbcdn-profile-a.akamaihd.net\/hprofile-ak-xpf1\/v\/t1.0-1\/p50x50\/10645271_10153210681381554_4457471542377841224_n.jpg?oh=9dbad58e14b05fa7c2781adaeeab5b97&oe=55B9C2F4&__gda__=1438481938_340148e4999cce9553d9c9d336d45446",
+        "pic":"https:\/\/fbcdn-profile-a.akamaihd.net\/hprofile-ak-xpf1\/v\/t1.0-1\/p100x100\/10645271_10153210681381554_4457471542377841224_n.jpg?oh=d05d519a44e95cdf135fef6d2b546716&oe=55B47680&__gda__=1437622776_b61f3bb009bfb0c4f462c3bde3772ee4",
+        "affiliations":[
+          {
+            "nid":"33583517",
+            "name":"Thomas Jefferson High School for Science and Technology",
+            "type":"high school"
+          }
+        ],
+        "profile_update_time":"1426179437",
+        "timezone":null,
+        "religion":null,
+        "birthday":"May 1, 1995",
+        "birthday_date":"05\/01\/1995",
+        "sex":"male",
+        "hometown_location":{
+          "city":"Herndon",
+          "state":"Virginia",
+          "country":"United States",
+          "zip":"",
+          "latitude":"38.9715",
+          "longitude":"-77.3887",
+          "id":"103702433002495",
+          "name":"Herndon, Virginia"
+        },
+        "meeting_sex":null,
+        "meeting_for":null,
+        "relationship_status":"",
+        "significant_other_id":null,
+        "political":null,
+        "current_location":{
+          "city":"Ashburn",
+          "state":"Virginia",
+          "country":"United States",
+          "zip":"",
+          "latitude":"39.0436",
+          "longitude":"-77.4878",
+          "id":"105799172787636",
+          "name":"Ashburn, Virginia"
+        },
+        "activities":"",
+        "is_app_user":false,
+        "locale":"en_US",
+        "profile_url":"https:\/\/www.facebook.com\/daniel.wang.9231",
+        "website":"",
+        "contact_email":null,
+        "email":null
+      },
+      {
+        "uid":"592681997",
+        "first_name":"Zachary",
+        "middle_name":"",
+        "last_name":"Zhang",
+        "name":"Zachary Zhang",
+        "pic_small":"https:\/\/fbcdn-profile-a.akamaihd.net\/hprofile-ak-xaf1\/v\/t1.0-1\/p50x50\/10891540_10152879996051998_9175485982063299896_n.jpg?oh=8fdfa30c658d82cb44b1060e1565735b&oe=5574081C&__gda__=1433807008_b04dfa26f88ac8c166a17f382668c887",
+        "pic_big":"https:\/\/fbcdn-profile-a.akamaihd.net\/hprofile-ak-xaf1\/v\/t1.0-1\/p200x200\/10891540_10152879996051998_9175485982063299896_n.jpg?oh=eb5210135f899d8b23ee2f4fcc8f3a79&oe=55841AC1&__gda__=1434093914_9357c8bddd9beee490b370699e659a7c",
+        "pic_square":"https:\/\/fbcdn-profile-a.akamaihd.net\/hprofile-ak-xaf1\/v\/t1.0-1\/p50x50\/10891540_10152879996051998_9175485982063299896_n.jpg?oh=8fdfa30c658d82cb44b1060e1565735b&oe=5574081C&__gda__=1433807008_b04dfa26f88ac8c166a17f382668c887",
+        "pic":"https:\/\/fbcdn-profile-a.akamaihd.net\/hprofile-ak-xaf1\/v\/t1.0-1\/p100x100\/10891540_10152879996051998_9175485982063299896_n.jpg?oh=b6fb7317bbd97f54de0349b7c9840c3e&oe=5581F068&__gda__=1433456883_1ca23b3f3bc7469ca0ce5eba3df3701a",
+        "affiliations":[
+          {
+            "nid":"33604617",
+            "name":"King George V School",
+            "type":"high school"
+          }
+        ],
+        "profile_update_time":"1420577029",
+        "timezone":null,
+        "religion":null,
+        "birthday":"June 16, 1995",
+        "birthday_date":"06\/16\/1995",
+        "sex":"male",
+        "hometown_location":{
+          "city":"Hong Kong",
+          "country":"Hong Kong",
+          "zip":"",
+          "latitude":"22.2833",
+          "longitude":"114.15",
+          "id":"113317605345751",
+          "name":"Hong Kong"
+        },
+        "meeting_sex":null,
+        "meeting_for":null,
+        "relationship_status":null,
+        "significant_other_id":null,
+        "political":null,
+        "current_location":{
+          "city":"Chicago",
+          "state":"Illinois",
+          "country":"United States",
+          "zip":"",
+          "latitude":"41.8369",
+          "longitude":"-87.6844",
+          "id":"108659242498155",
+          "name":"Chicago, Illinois"
+        },
+        "activities":"Jubeat, Eating, Rubbing aloe vera into my tender sunburnt body, Mahjong",
+        "is_app_user":false,
+        "locale":"en_US",
+        "profile_url":"https:\/\/www.facebook.com\/zachary.zhang",
+        "website":"",
+        "contact_email":null,
+        "email":null
+      }
+    ]
         </p>
+        <h3>Friend Edges</h3>
         <p>
-            <label>Friend Edges</label>
-            <br>
-            <textarea name="friend_edges"></textarea>
-            <!--<input type="text" name="friend_edges">-->
+            [
+    {
+    "uid1":"Daniel Wang",
+    "uid2":"Zachary Zhang"
+    }
+    ]
         </p>
-        <p>
-            <input type="submit" value="Upload!">
-        </p>
-    </form>
+    </div>
 </body>
 </html>

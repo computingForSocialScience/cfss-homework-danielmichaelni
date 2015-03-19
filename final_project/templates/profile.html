@@ -6,26 +6,34 @@
     <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <h1>{{ name }}</h1>
-    <img src="{{ pic }}" class="img-responsive">
-    <ul>
-        <li>Sex: {{ sex }}</li>
-        <li>Birthday: {{ birthday }}</li>
-        <li>
-            <a href="{{ profile }}">Visit {{ name }}'s profile on Facebook</a>
-        </li>
-    </ul>
+    <div class="container">
+        <nav>
+            <a href="/" class="btn btn-default">Home</a>
+            <a href="/upload" class="btn btn-default">Upload</a>
+        </nav>
+        <h1><a href="{{ profile_url }}">{{ name }}</a></h1>
+        <img src="{{ pic }}" class="img-responsive img-rounded">
+        <ul>
+            <li>Sex: {{ sex }}</li>
+            <li>Birthday: {{ birthday }}</li>
+            <li>Location: {{ loc }}</li>
+        </ul>
 
-    <h3>Friends</h3>
-    <ul>
-        {% for friend in friends_with_id %}
-            <li>
-                <a href="/profile/{{ friend[0] }}">{{ friend[1] }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-
-    <h3>Friend Graph</h3>
-    <img src="/static/temp/{{ graph_url }}" class="img-responsive">
+        <div class="row">
+            <div class="col-lg-3">
+                <h3>Friends</h3>
+                <ul>
+                    {% for friend in friends_with_id %}
+                        <li>
+                            <a href="/profile/{{ friend[0] }}">{{ friend[1] }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-lg-9">
+                <img src="/static/temp/{{ graph_url }}" class="img-responsive">
+            </div>
+        </div>
+    </div>
 </body>
 </html>
